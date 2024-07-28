@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Cmd", "IntroToLinq\Linq.Cmd.csproj", "{78F09664-2748-4BB5-94C7-0C5D6A3FB082}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ.Cmd", "IntroToLinq\LINQ.Cmd.csproj", "{78F09664-2748-4BB5-94C7-0C5D6A3FB082}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Data", "Linq.Data\Linq.Data.csproj", "{E29C215E-F1DA-41C0-B500-3B6EAA948F6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ.Data", "Linq.Data\LINQ.Data.csproj", "{E29C215E-F1DA-41C0-B500-3B6EAA948F6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

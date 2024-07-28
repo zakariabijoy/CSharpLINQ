@@ -22,4 +22,6 @@ var linqResult =
 
 var movieList = GetMovies();
 
-var linqResult2 = movieList.Where(movie => movie.Name.Contains("Spider")).Select(movie => movie);
+var linqResult2 = movieList
+    .Where(movie => movie.Name.Contains("Spider"))
+    .Select(movie => movie);
