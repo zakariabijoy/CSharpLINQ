@@ -1,4 +1,5 @@
 using LINQ.Cmd;
+using LINQ.Data.Models;
 
 namespace Linq.Cmd._3_FilteringAndOrdering;
 
@@ -6,8 +7,10 @@ public class WhereConditions : QueryRunner
 {
     public override void Run()
     {
-        SingleCondition_Q();
-        SingleCondition_F();
+        //SingleCondition_Q();
+        //SingleCondition_F();
+        //SingleFunctionCondition_Q();
+        SingleFunctionCondition_F();
     }
 
     /// <summary>
@@ -44,6 +47,18 @@ public class WhereConditions : QueryRunner
     private void SingleFunctionCondition_Q()
     {
         var sourceMovies = Repository.GetAllMovies();
+
+        var result =
+            from movie in sourceMovies
+            where IsSpiderManMovie(movie)
+            select movie;
+
+        PrintAll(result);
+    }
+
+    private static bool IsSpiderManMovie(Movie movie)
+    {
+        return movie.Name.Contains("Spider-Man");
     }
     
     /// <summary>
@@ -52,8 +67,18 @@ public class WhereConditions : QueryRunner
     private void SingleFunctionCondition_F()
     {
         var sourceMovies = Repository.GetAllMovies();
+
+        var result = sourceMovies
+            .Where(IsIronManMovie);
+
+        PrintAll(result);
     }
-    
+
+    private static bool IsIronManMovie(Movie movie)
+    {
+        return movie.Name.Contains("Iron");
+    }
+
     /// <summary>
     /// Multiple chained conditions, query syntax
     /// </summary>
