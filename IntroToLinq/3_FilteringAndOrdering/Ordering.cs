@@ -12,7 +12,8 @@ public class Ordering : QueryRunner
         //SingleOrderBy_F();
         //SingleOrderByDescending_F();
         //MultipleOrderBy_Q();
-        MultipleOrderBy_F();
+        //MultipleOrderBy_F();
+        OrderByCustomComparer_F();
     }
 
     /// <summary>
@@ -101,16 +102,39 @@ public class Ordering : QueryRunner
         PrintAll(result);
     }
 
-    ///// <summary>
-    ///// Single Order By using a custom comparer, Fluent Syntax
-    ///// </summary>
-    //private void OrderByCustomComparer_F()
-    //{
-    //    var sourceMovies = Repository.GetAllMovies();
+    /// <summary>
+    /// Single Order By using a custom comparer, Fluent Syntax
+    /// </summary>
+    private void OrderByCustomComparer_F()
+    {
+        var sourceMovies = Repository.GetAllMovies();
 
-    //    var result = sourceMovies
-    //        .OrderByDescending(movie => movie.Name);
+        var result = sourceMovies
+            .OrderBy(movie => movie, new MovieComparer());
 
-    //    PrintAll(result);
-    //}
+        PrintAll(result);
+    }
+}
+
+class MovieComparer : IComparer<Movie>
+{
+    public int Compare(Movie? first, Movie? second)
+    {
+        // Same instance
+        if(ReferenceEquals(first, second)) return 0;
+        
+        //Null is smaller than everything
+        if(first is null) return -1;
+        if(second is null) return 1;
+        
+        // if the years are different, sort by year
+        if(first.ReleaseDate.Year < second.ReleaseDate.Year) return -1;
+        if(first.ReleaseDate.Year > second.ReleaseDate.Year) return 1;
+
+        // if the years are equal, sort by name
+
+        return string.Compare(first.Name, second.Name, StringComparison.OrdinalIgnoreCase);
+
+
+    }
 }
